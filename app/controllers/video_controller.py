@@ -30,14 +30,5 @@ def list_videos_controller(db: Session):
     return db.query(Video).all()
 
 
-def read_video_controller(db: Session, video_id: int):
-    query = db.query(Video).filter(Video.id == video_id).first()
-
-    if not query:
-        raise HTTPException(status_code=404, detail="Video not found")
-
-    return query
-
-
 def list_categories_controller(db: Session):
     return db.query(Category).all()

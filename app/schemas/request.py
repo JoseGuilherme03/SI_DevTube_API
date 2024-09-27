@@ -10,3 +10,8 @@ class VideoSchema(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class UserCreateSchema(BaseModel):
+    username: str
+    password: str
