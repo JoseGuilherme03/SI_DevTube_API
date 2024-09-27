@@ -2,11 +2,17 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 
-usuario = 'postgres'
-senha = '159263'
-host = 'localhost'
+# usuario = 'postgres'
+# senha = '159263'
+# host = 'localhost'
+# porta = 5432
+# nome_bd = 'devtube_database'
+
+usuario = 'jose'
+senha = 'LiJSxBh5RZOtRTKTN96B5cSBerEa4bym'
+host = 'dpg-crraeclds78s73ctrl9g-a'
 porta = 5432
-nome_bd = 'devtube_database'
+nome_bd = 'si_devtube_database'
 
 DATABASE_URL = f"postgresql://{usuario}:{senha}@{host}:{porta}/{nome_bd}"
 
