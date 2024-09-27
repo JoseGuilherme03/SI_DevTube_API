@@ -17,7 +17,7 @@ class Video(Base):
 
 class Category(Base):
     __tablename__ = "categories"
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     name = Column(String, index=True)
 
     videos = relationship("Video", back_populates="category")

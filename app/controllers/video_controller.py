@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from app.models.entities import Video, Category
 from http import HTTPStatus
 
-from app.schemas.request import VideoSchema
+from app.schemas.request import VideoSchema, CategorySchema
 
 
 def create_video_controller(db: Session, video: VideoSchema):
