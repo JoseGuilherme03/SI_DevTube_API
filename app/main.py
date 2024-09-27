@@ -2,10 +2,11 @@ from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
-from app.controllers.video_controller import create_video_controller, list_videos_controller, list_categories_controller
+from app.controllers.video_controller import create_video_controller, list_videos_controller, \
+    list_categories_controller, create_category_controller
 from app.internal_modules.database import engine, Base, get_db
 from app.models.entities import User
-from app.schemas.request import VideoSchema, UserCreateSchema
+from app.schemas.request import VideoSchema, UserCreateSchema, CategorySchema
 
 app = FastAPI()
 Base.metadata.create_all(bind=engine)
@@ -65,3 +66,10 @@ def read_videos(db: Session = Depends(get_db)):
 @app.get("/categories/")
 def get_categories(db: Session = Depends(get_db)):
     return list_categories_controller(db)
+
+
+@app.post("/categories/", status_code=status.HTTP_201_CREATED)
+def create_category(category: CategorySchema, db: Session = Depends(get_db),
+                    credentials: HTTPBasicCredentials = Depends(security)):
+    authenticate(credentials, db)
+    return create_category_controller(db, category)

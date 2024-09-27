@@ -15,3 +15,10 @@ class VideoSchema(BaseModel):
 class UserCreateSchema(BaseModel):
     username: str
     password: str
+
+
+class CategorySchema(BaseModel):
+    name: str
+
+    class Config:
+        orm_mode = True
